@@ -24,7 +24,7 @@ class MaterialService {
             if (nombre != null )    {like("nombre", nombre)}
             if (cmd.cantidad != null)  {eq ("cantidad", cmd.cantidad)}
             if (cmd.id != null)         {eq ("id",cmd.id)}
-            if (etiquetaList != null)   {etiquetas inList(etiquetaList.get(0))}
+            //if (etiquetaList != null)   {etiquetas inList(etiquetaList.get(0))}
             if (cmd.sort!=null&&cmd.sort!="") order(cmd.sort,cmd.order)
 
             maxResults(cmd.max)
