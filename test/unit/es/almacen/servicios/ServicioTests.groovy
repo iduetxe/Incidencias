@@ -1,0 +1,17 @@
+package es.almacen.servicios
+
+import grails.test.*
+
+class ServicioTests extends GrailsUnitTestCase {
+    protected void setUp() {
+        super.setUp()
+    }
+
+    protected void tearDown() {
+        super.tearDown()
+    }
+
+    void testSomething() {
+
+    }
+}

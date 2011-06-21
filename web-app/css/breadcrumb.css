@@ -1,0 +1,66 @@
+/* Float Clearing
+ ---------------------------------------------------------------------*/
+
+.module:after
+{
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+/* float clearing for IE6 */
+* html .module
+{
+	height: 1%;
+	overflow: visible;
+}
+
+/* float clearing for IE7 */
+* + html .module
+{
+	min-height: 1%;
+}
+
+/* Breadcrumb Styles
+ ---------------------------------------------------------------------*/
+
+#breadCrumbNavigation {
+    widht:100%;
+}
+
+#breadCrumbNavigation {
+        color:#9EF534;
+}
+
+#breadCrumbNavigation a {
+        color:#9EF534;
+}
+#breadCrumbNavigation .breadCrumb
+{
+    float:inherit;
+    margin:0px;
+    padding:0px 15px;
+    border:0px;
+    /* background:transparent url('../images/breadcrumb/bc_bg.png') repeat-x; */
+    background:transparent;
+    /*border-bottom:1px solid #ccc; */
+    font-size:0.8em;
+}
+
+
+#breadCrumbNavigation .breadCrumb ul li{
+   background:transparent url('../images/breadcrumb/bc_separator.png') no-repeat 100% 3px;
+}
+
+.breadCrumb ul li:first-child a {
+    text-indent:-300px;
+    background:transparent url('../images/skin/house.png') no-repeat 100% 2px;
+    width:16px;
+    height:17px;
+}
+
+#breadCrumbText {
+    display:none;
+}
