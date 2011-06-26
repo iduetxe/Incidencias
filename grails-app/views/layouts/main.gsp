@@ -12,7 +12,7 @@
 
         <g:layoutHead />
         <g:javascript library="application" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<%--	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> --%>
     </head>
     <body>
         <div id="spinner" class="spinner" style="display:none;"></div>

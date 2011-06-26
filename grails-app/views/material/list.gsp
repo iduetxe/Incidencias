@@ -6,6 +6,10 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'material.label', default: 'Material')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
+
+        <!-- AUTOSUGEST -->
+        <script src="${resource(dir:'js/jquery-autocomplete-r3.2.2',file:'jquery.autocomplete.js')}" ></script>
+        <link rel="stylesheet" href="${resource(dir:'js/jquery-autocomplete-r3.2.2',file:'jquery.autocomplete.css')}" > </link>
     </head>
     <body>
         <div class="body">
@@ -67,10 +71,43 @@
                 <div class="hoja">
                     <h2><g:message code="material.list.filtro" default="Etiquetas a mostrar"/></h2>
                     <div class="list">
-                        <ul>
-                            <g:each in="${etiquetasList}" var="etiqueta">
+
+                        <input type="text" id="tagSuggest" autocomplete="off"/>
+                        <script>
+
+//                        $("#tagSuggest").click(function() {
+//                            $("#tagSuggest").val('');
+//                        });
+//                        $("#tagSuggest").blur(function() {
+ //                           $("#tagSuggest").val('');
+//                        });
+                        $("#tagSuggest").autocomplete({
+                                url:'<g:createLink controller="material" action="listTags" />',
+                                //    data: [ 'apple', 'apricot', 'pear', 'prume'],
+//                                sortFunction: function(a, b, filter) {
+//                                    return 0;
+//                               },
+     //                           showResult: function(value, data) {
+     //                              return '<p style="color:red; clear:both;width:100%">' + value + '</p></hr>';
+     //                           },
+                                onItemSelect: function(item) {
+                                    var text =  item.value;
+                                    if (item.data.length) {
+                                        text += ' <i>' + item.data.join(', ') + '</i>';
+                                    }
+                                    var li = '<li>'+text+'</li><input type="hidden" value="'+text+'" name="tags"/>';
+                                    $("#listTagsSelected").append(li);
+                                    $("#tagSuggest").val('');
+                                },
+                                maxItemsToShow: 5
+                            });
+                        </script>
+
+
+                        <ul id="listTagsSelected">
+                            <g:each in="${tagList}" var="tag">
                                 <li>
-                                    <g:checkBox name="etiquetas" value="${etiqueta.nombre}"/>${etiqueta.nombre}
+                                    <g:checkBox name="tags" value="${tag}"/>${tag}
                                 </li>
                             </g:each>
                         </ul>

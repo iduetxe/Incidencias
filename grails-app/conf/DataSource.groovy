@@ -17,8 +17,9 @@ environments {
             dbCreate = "create-drop" // one of 'create', 'create-drop','update'
             url = "jdbc:hsqldb:mem:devDB"
     	    driverClassName = "org.hsqldb.jdbcDriver"
-	    username = "sa"
-	    password = ""
+	        username = "sa"
+	        password = ""
+            logSql = true
         }
     }
     test {

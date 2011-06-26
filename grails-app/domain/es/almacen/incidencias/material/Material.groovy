@@ -1,15 +1,15 @@
 package es.almacen.incidencias.material
 
 import es.almacen.incidencias.MaterialUtilizado
+import org.grails.taggable.Taggable
 
-class Material {
+class Material implements Taggable{
 
     String referencia
 	String nombre
 	Integer cantidad=0
 
-//	static hasMany = [usadoEn:MaterialUtilizado, tipoMaterial:TipoMaterial]
-    static hasMany = [usadoEn:MaterialUtilizado, etiquetas:Etiqueta]
+    static hasMany = [usadoEn:MaterialUtilizado]
 
 
 	static constraints = {

@@ -34,11 +34,12 @@
                                   <label for="cantidad"><g:message code="material.cantidad.label" default="Cantidad" /></label>
                                   <div valign="top" class="value ${hasErrors(bean: materialInstance, field: 'cantidad', 'errors')}"><g:textField name="cantidad" value="${fieldValue(bean: materialInstance, field: 'cantidad')}" /></div>
                             	</div>
+                        
 				<div class="row">
                                   <label for="usadoEn"><g:message code="material.usadoEn.label" default="Usado En" /></label>
                                   <div valign="top" class="value ${hasErrors(bean: materialInstance, field: 'usadoEn', 'errors')}">
 <ul>
-<g:each in="${materialInstance?.usadoEn?}" var="u">
+<g:each in="${materialInstance?.usadoEn}" var="u">
     <li><g:link controller="materialUtilizado" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></li>
 </g:each>
 </ul>

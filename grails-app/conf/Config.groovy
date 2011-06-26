@@ -101,3 +101,8 @@ grails.plugins.springsecurity.auth.loginFormUrl = '/login/auth'
 
 // Breadcrumb
 breadcrumbs.crumbs.max=4
+
+
+//Taggable
+grails.taggable.tag.table="tag"
+grails.taggable.tagLink.table="tag_link"

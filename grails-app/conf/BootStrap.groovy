@@ -48,19 +48,23 @@ class BootStrap {
 		def servJardineria	= Servicio.findByNombre('Jardinería') ?: new Servicio(nombre:'Jardinería', responsable:userUser).save(failOnError: true)
 
 
-/*#########################   ETIQUETAS  ############################3*/
-        Etiqueta ropa = new Etiqueta(nombre:'Ropa').save(failOnError:true);
-        Etiqueta herramienta = new Etiqueta(nombre:'Herramienta').save(failOnError:true);
-
 /*#########################   MATERIAL   ############################3*/
 		def llave 	= Material.findByNombre('Llave inglesa') ?:	    new Material(nombre: "Llave inglesa", referencia:'lli',	 cantidad:4)
-                llave.addToEtiquetas(herramienta)
                 llave.save(failOnError:true)
+                llave.addTag("herramienta")
 		def sabanas 	= Material.findByNombre('Sábanas') ?:		new Material(nombre: "Sábanas",		  referencia:'sab',  cantidad:10)
-                sabanas.addToEtiquetas(ropa)
                 sabanas.save(failOnError:true)
+                sabanas.addTag("ropa de cama")
+                sabanas.addTag("ropa")
 		def bombilla 	= Material.findByNombre('Bombilla') ?: 		new Material(nombre: "Bombilla",	  referencia:'bom',  cantidad:100)
                 bombilla.save(failOnError:true)
+                bombilla.addTag("herramienta")
+                bombilla.addTag("consumible")
+        def chaqueta 	= Material.findByNombre('Chaqueta') ?:		new Material(nombre: "Chaqueta",      referencia:'chaq',  cantidad:2)
+                chaqueta.save(failOnError:true)
+                chaqueta.addTag("ropa de personal")
+                chaqueta.addTag("ropa")
+
 /*######################### INCIDENCIAS #############################3*/
 		for (i in 0..130 ) {
 			def inci = new Incidencia(

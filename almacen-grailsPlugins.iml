@@ -14,6 +14,7 @@
         <webroots>
           <root url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/breadcrumbs-0.5.2/web-app" relative="/" />
           <root url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/breadcrumbs-0.5.2/grails-app/views" relative="/" />
+          <root url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/jquery-1.6.1.1/web-app" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -39,6 +40,14 @@
       <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/hibernate-jpa-provider-0.4/target/test-classes" />
       <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/hibernate-jpa-provider-0.4/web-app/plugins" />
     </content>
+    <content url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/jquery-1.6.1.1">
+      <sourceFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/jquery-1.6.1.1/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/jquery-1.6.1.1/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/jquery-1.6.1.1/grails-app/taglib" isTestSource="false" />
+      <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/jquery-1.6.1.1/target/classes" />
+      <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/jquery-1.6.1.1/target/test-classes" />
+      <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/jquery-1.6.1.1/web-app/plugins" />
+    </content>
     <content url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/spring-security-core-1.1.2">
       <sourceFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/spring-security-core-1.1.2/src/java" isTestSource="false" />
       <sourceFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/spring-security-core-1.1.2/src/groovy" isTestSource="false" />
@@ -47,6 +56,15 @@
       <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/spring-security-core-1.1.2/target/classes" />
       <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/spring-security-core-1.1.2/target/test-classes" />
       <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/spring-security-core-1.1.2/web-app/plugins" />
+    </content>
+    <content url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/taggable-0.6.3">
+      <sourceFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/taggable-0.6.3/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/taggable-0.6.3/grails-app/domain" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/taggable-0.6.3/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/taggable-0.6.3/grails-app/taglib" isTestSource="false" />
+      <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/taggable-0.6.3/target/classes" />
+      <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/taggable-0.6.3/target/test-classes" />
+      <excludeFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/taggable-0.6.3/web-app/plugins" />
     </content>
     <content url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/tomcat-1.3.7">
       <sourceFolder url="file://$USER_HOME$/.grails/1.3.7/projects/almacen/plugins/tomcat-1.3.7/src/groovy" isTestSource="false" />

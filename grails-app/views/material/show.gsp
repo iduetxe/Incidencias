@@ -45,19 +45,6 @@
                         </div>
                     
 			<div class="row">
-                            	<label><g:message code="material.tipoMaterial.label" default="Tipo Material" /></label>
-                            
-                            	<div class="value">
-                	                <ul>
-                       		        <g:each in="${materialInstance.tipoMaterial}" var="t">
-                                	    <li><g:link controller="tipoMaterial" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-                                	</g:each>
-                                	</ul>
-                            	</div>
-                            
-                        </div>
-                    
-			<div class="row">
                             	<label><g:message code="material.usadoEn.label" default="Usado En" /></label>
                             
                             	<div class="value">

@@ -17,8 +17,26 @@ class MaterialController {
     @Secured(['ROLE_TECNICO', 'ROLE_ADMIN'])
     def list = { MaterialListCommand cmd ->
         def result = materialService.listMaterial(cmd)
-        def etiquetas = Etiqueta.findAll();
-        [materialInstanceList: result, materialInstanceTotal: result.getTotalCount(), etiquetasList: etiquetas]
+        //def tags = Material.allTags
+        def tags = []
+        [materialInstanceList: result, materialInstanceTotal: result.getTotalCount(), tagList: tags]
+    }
+
+    @Secured(['ROLE_TECNICO', 'ROLE_ADMIN'])
+    def listTags = {        String search = params.getProperty("q")
+        List<String> tagsList = materialService.listMaterialTags(search);
+        StringBuffer res = new StringBuffer()
+        if (tagsList){
+            for (String tag : tagsList)
+            {
+                res.append(tag+"\n")
+            }
+            res.deleteCharAt(res.size()-1)
+        }
+        render res.toString()
+        //render (contentType:"text/json") {tagsList}
+        //render (contentType:"text/json") {'apple \n apricot|pear|prume'}
+        //render  'apple \n apricot|pear|prume'
     }
 
     @Secured(['ROLE_ADMIN'])

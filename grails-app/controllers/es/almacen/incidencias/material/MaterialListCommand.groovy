@@ -17,7 +17,7 @@ class MaterialListCommand {
     String referencia
     Integer cantidad
     Long id
-    List<String> etiquetas
+    List<String> tags
 
     static constraints = {
         id(min:0L)
@@ -28,5 +28,6 @@ class MaterialListCommand {
         nombre(nullable:true)
         referencia(referencia:true)
         cantidad(nullable:true)
+        tags(nullable:true)
     }
 }
