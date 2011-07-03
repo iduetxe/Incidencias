@@ -308,31 +308,43 @@ th.desc a {
 
 
 .buttons .delete {
-    background: transparent url(../images/skin/delete_16x16.png) 5px 50% no-repeat;
-    padding-left: 28px;
+    background: transparent url(../images/skin/delete_16x16.png) 0px 0px no-repeat;
+    padding: 8px;
 }
+
 .buttons .edit {
     background: transparent url(../images/skin/edit_16x16.png) 5px 50% no-repeat;
-    padding-left: 28px;
+    padding: 8px;
 }
 .buttons .save {
     background: transparent url(../images/skin/save_16x16.png) 5px 50% no-repeat;
-    padding-left: 28px;
+    padding: 8px;
 }
 
 .buttons .addNote {
     background: transparent url(../images/skin/addNote_16x16.png) 5px 50% no-repeat;
-    padding-left: 28px;
+    padding: 8px;
 }
 
 .buttons .addMaterial {
     background: transparent url(../images/skin/llave_ing_16x16.png) 5px 50% no-repeat;
-    padding-left: 28px;
+    padding: 8px;
 }
 
 .buttons .login {
     background: transparent url(../images/skin/login_16x16.png) 5px 50% no-repeat;
-    padding-left: 28px;
+    padding: 8px;
+}
+
+#listTagsSelected span{
+    text-transform:capitalize
+}
+
+#listTagsSelected .buttons{
+    float:left;
+    margin-left:10px;
+    margin-right:10px;
+    cursor:pointer;
 }
 
 a.searchButton{
