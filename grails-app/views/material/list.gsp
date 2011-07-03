@@ -8,8 +8,8 @@
         <title><g:message code="default.list.label" args="[entityName]" /></title>
 
         <!-- AUTOSUGEST -->
-        <script src="${resource(dir:'js/jquery-autocomplete-r3.2.2',file:'jquery.autocomplete.js')}" ></script>
-        <link rel="stylesheet" href="${resource(dir:'js/jquery-autocomplete-r3.2.2',file:'jquery.autocomplete.css')}" > </link>
+        <script src="${resource(dir:'js/jquery-autocomplete-r3.2.2',file:'jquery.autocomplete.js')}"  type="text/javascript"></script>
+        <link rel="stylesheet" href="${resource(dir:'js/jquery-autocomplete-r3.2.2',file:'jquery.autocomplete.css')}" type="text/css"> </link>
     </head>
     <body>
         <div class="body">
@@ -73,7 +73,7 @@
                     <div class="list">
 
                         <input type="text" id="tagSuggest" autocomplete="off"/>
-                        <script>
+                        <script type="text/javascript">
 
 //                        $("#tagSuggest").click(function() {
 //                            $("#tagSuggest").val('');
@@ -83,19 +83,18 @@
 //                        });
                         $("#tagSuggest").autocomplete({
                                 url:'<g:createLink controller="material" action="listTags" />',
-                                //    data: [ 'apple', 'apricot', 'pear', 'prume'],
 //                                sortFunction: function(a, b, filter) {
 //                                    return 0;
 //                               },
-     //                           showResult: function(value, data) {
-     //                              return '<p style="color:red; clear:both;width:100%">' + value + '</p></hr>';
-     //                           },
+                               showResult: function(value, data) {
+                                  return '<p style="text-transform:capitalize">' + value + '</p>';
+                               },
                                 onItemSelect: function(item) {
                                     var text =  item.value;
                                     if (item.data.length) {
                                         text += ' <i>' + item.data.join(', ') + '</i>';
                                     }
-                                    var li = '<li>'+text+'</li><input type="hidden" value="'+text+'" name="tags"/>';
+                                    var li = '<li><div class="buttons"><div class="delete"/></div><span>'+text+'</span><input type="hidden" value="'+text+'" name="tags"/></li>';
                                     $("#listTagsSelected").append(li);
                                     $("#tagSuggest").val('');
                                 },
