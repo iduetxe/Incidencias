@@ -54,12 +54,18 @@
    background:transparent url('../images/breadcrumb/bc_separator.png') no-repeat 100% 3px;
 }
 
+
 .breadCrumb ul li:first-child a {
     text-indent:-300px;
     background:transparent url('../images/skin/house.png') no-repeat 100% 2px;
     width:16px;
     height:17px;
 }
+
+#breadCrumbNavigation .breadCrumb ul li.last {
+   background: none;
+}
+
 
 #breadCrumbText {
     display:none;
