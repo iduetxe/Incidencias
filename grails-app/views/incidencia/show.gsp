@@ -5,7 +5,6 @@
     <meta name="layout" content="main"/>
     <g:set var="entityName" value="${message(code: 'incidencia.label', default: 'Incidencia')}"/>
     <title>${incidenciaInstance?.titulo}</title>
-    <g:javascript library="prototype"/>
 </head>
 <body>
 <div class="body">
@@ -119,6 +118,7 @@
 
 <script type="text/javascript" src="${resource(dir: 'js', file: 'thickbox.js')}"></script>
 <link rel="stylesheet" href="${resource(dir: 'css', file: 'thickbox.css')}" type="text/css" media="screen"/>
+
 <sec:ifLoggedIn>
     <div id="addNote" style="display:none">
         <g:form>
