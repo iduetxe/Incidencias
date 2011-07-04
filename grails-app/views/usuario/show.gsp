@@ -8,6 +8,7 @@
         <title>${usuarioInstance.name}</title>
     </head>
     <body>
+        <div id="breadCrumbText">${fieldValue(bean: usuarioInstance, field: "name")}</div>
         <div class="body">
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
@@ -15,7 +16,7 @@
             <div class="cuaderno">
 		<div class="cuadernoUp"> </div>
 		<div class="cuadernoBody">
-            		<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+            		<h1>${fieldValue(bean: usuarioInstance, field: "name")}</h1>
 
                     
 			<div class="row">
