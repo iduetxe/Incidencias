@@ -67,51 +67,41 @@
                         <g:paginate total="${materialInstanceTotal}" />
                         <a href="" class="searchButton" onclick="$('#submitSearch').click(); return false;">search</a>
                     </div>
-                </div>
-                <div class="hoja">
-                    <h2><g:message code="material.list.filtro" default="Etiquetas a mostrar"/></h2>
-                    <div class="list">
-
-                        <input type="text" id="tagSuggest" autocomplete="off"/>
-                        <script type="text/javascript">
-
-//                        $("#tagSuggest").click(function() {
-//                            $("#tagSuggest").val('');
-//                        });
-//                        $("#tagSuggest").blur(function() {
- //                           $("#tagSuggest").val('');
-//                        });
-                        $("#tagSuggest").autocomplete({
-                                url:'<g:createLink controller="material" action="listTags" />',
-//                                sortFunction: function(a, b, filter) {
-//                                    return 0;
-//                               },
-                               showResult: function(value, data) {
-                                  return '<p style="text-transform:capitalize">' + value + '</p>';
-                               },
-                                onItemSelect: function(item) {
-                                    var text =  item.value;
-                                    if (item.data.length) {
-                                        text += ' <i>' + item.data.join(', ') + '</i>';
-                                    }
-                                    var li = '<li><div class="buttons"><div class="delete"/></div><span>'+text+'</span><input type="hidden" value="'+text+'" name="tags"/></li>';
-                                    $("#listTagsSelected").append(li);
-                                    $("#tagSuggest").val('');
-                                },
-                                maxItemsToShow: 5
-                            });
-                        </script>
-
-
-                        <ul id="listTagsSelected">
-                            <g:each in="${tagList}" var="tag">
-                                <li>
-                                    <g:checkBox name="tags" value="${tag}"/>${tag}
-                                </li>
-                            </g:each>
-                        </ul>
+                    <div class="extraDataTable">
+                        <p class="title"><g:message code="material.list.filtro" default="Etiquetas a mostrar"/></p>
+                        <div class="list">
+                            <input type="text" id="tagSuggest" autocomplete="off"/>
+                            <ul id="listTagsSelected">
+                                <g:each in="${filter.tags}" var="tag">
+                                    <li onclick="removeSelectedTag(this)">${tag}<input type="hidden" value="${tag}" name="tags"/></li>
+                                </g:each>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                <script type="text/javascript">
+                    function removeSelectedTag(buttonDelete){
+                        var li = $(buttonDelete)
+                        li.remove();
+                    }
+
+                $("#tagSuggest").autocomplete({
+                        url:'<g:createLink controller="material" action="listTags"/>',
+                       showResult: function(value, data) {
+                          return '<p style="text-transform:capitalize">' + value + '</p>';
+                       },
+                        onItemSelect: function(item) {
+                            var text =  item.value;
+                            if (item.data.length) {
+                                text += ' <i>' + item.data.join(', ') + '</i>';
+                            }
+                            var li = '<li onclick="removeSelectedTag(this)">'+text+'<input type="hidden" value="'+text+'" name="tags"/></li>';
+                            $("#listTagsSelected").append(li);
+                            $("#tagSuggest").val('');
+                        },
+                        maxItemsToShow: 5
+                    });
+                </script>
             </g:form>
         </div>
     </body>

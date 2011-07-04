@@ -279,6 +279,16 @@ th.desc a {
     margin-top:-10px;
 }
 
+.extraDataTable {
+    clear:both;
+    background:#bddf54;
+    padding:3px;
+}
+
+.extraDataTable .title{
+    font-weight:bold;
+}
+
 /* DIALOG */
 
 .dialog table {
@@ -335,17 +345,27 @@ th.desc a {
     background: transparent url(../images/skin/login_16x16.png) 5px 50% no-repeat;
     padding: 8px;
 }
-
-#listTagsSelected span{
-    text-transform:capitalize
+#listTagsSelected{
+    height: 21px;
+    margin-left: 200px;
+    margin-top: -20px;
+    padding-left: 15px;
 }
 
-#listTagsSelected .buttons{
-    float:left;
-    margin-left:10px;
-    margin-right:10px;
+#listTagsSelected li{
+    text-transform:capitalize;
     cursor:pointer;
+    float:left;
+    list-style: none outside none;
+    margin-right: 15px;
+    padding:1px;
+    border:1px solid #7cc422;
 }
+
+#listTagsSelected li:hover{
+    text-decoration:underline;
+}
+
 
 a.searchButton{
     background: transparent url(../images/skin/search_32x32.png) 0 0 no-repeat;

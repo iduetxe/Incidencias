@@ -18,8 +18,8 @@ class MaterialController {
     def list = { MaterialListCommand cmd ->
         def result = materialService.listMaterial(cmd)
         //def tags = Material.allTags
-        def tags = []
-        [materialInstanceList: result, materialInstanceTotal: result.getTotalCount(), tagList: tags]
+        //def tags = cmd.getTags()
+        [materialInstanceList: result, materialInstanceTotal: result.getTotalCount(), filter: cmd]
     }
 
     @Secured(['ROLE_TECNICO', 'ROLE_ADMIN'])
