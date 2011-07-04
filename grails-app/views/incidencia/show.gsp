@@ -15,7 +15,7 @@
             <h1><g:message code="incidencia.show" args="${[incidenciaInstance.titulo, incidenciaInstance.id]}"/></h1>
             <div class="row">
                 <label><g:message code="incidencia.id.label" default="Id"/></label>
-                <div valign="top" class="value">${fieldValue(bean: incidenciaInstance, field: "id")}</div>
+                <div class="value">${fieldValue(bean: incidenciaInstance, field: "id")}</div>
             </div>
             <div class="row">
                 <label><g:message code="incidencia.estadoIncidencia.label" default="Estado Incidencia"/></label>
@@ -31,12 +31,12 @@
 
             <div class="row">
                 <label><g:message code="incidencia.prioridad.label" default="Prioridad"/></label>
-                <div valign="top" class="value">${fieldValue(bean: incidenciaInstance, field: "prioridad")}</div>
+                <div class="value">${fieldValue(bean: incidenciaInstance, field: "prioridad")}</div>
             </div>
 
             <div class="row">
                 <label><g:message code="incidencia.titulo.label" default="titulo"/></label>
-                <div valign="top" class="value">${fieldValue(bean: incidenciaInstance, field: "titulo")}</div>
+                <div class="value">${fieldValue(bean: incidenciaInstance, field: "titulo")}</div>
             </div>
 
             <div class="row">
@@ -48,12 +48,12 @@
 
             <div class="row">
                 <label><g:message code="incidencia.nombreContacto.label" default="Nombre Contacto"/></label>
-                <div valign="top" class="value">${fieldValue(bean: incidenciaInstance, field: "nombreContacto")}</div>
+                <div class="value">${fieldValue(bean: incidenciaInstance, field: "nombreContacto")}</div>
             </div>
 
             <div class="row">
                 <label><g:message code="incidencia.tlfContacto.label" default="Tlf Contacto"/></label>
-                <div valign="top" class="value">${fieldValue(bean: incidenciaInstance, field: "tlfContacto")}</div>
+                <div class="value">${fieldValue(bean: incidenciaInstance, field: "tlfContacto")}</div>
             </div>
 
             <div class="row">
