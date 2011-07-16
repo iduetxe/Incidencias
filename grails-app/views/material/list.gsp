@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'material.label', default: 'Material')}" />
-        <title><g:message code="default.list.label" args="[entityName]" /></title>
+        <title><g:message code="material.list.title" default="Lista de material"/></title>
 
         <!-- AUTOSUGEST -->
         <script src="${resource(dir:'js/jquery-autocomplete-r3.2.2',file:'jquery.autocomplete.js')}"  type="text/javascript"></script>
@@ -13,8 +13,8 @@
     </head>
     <body>
         <div class="body">
-            <div id="breadCrumbText"><g:message code="default.list.label" args="[entityName]" /></div>
-            <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+            <div id="breadCrumbText"><g:message code="material.list.title" default="Lista de material"/></div>
+            <h1><g:message code="material.list.title" default="Lista de material"/></h1>
             <g:form action="list" method="POST">
                 <div class="listTableContainer">
                     <div class="list">
@@ -24,15 +24,10 @@
                             <table>
                                 <thead>
                                     <tr>
-
                                         <g:sortableColumn property="id" title="${message(code: 'material.id.label', default: 'Id')}" />
-
                                         <g:sortableColumn property="nombre" title="${message(code: 'material.nombre.label', default: 'Nombre')}" />
-
                                         <g:sortableColumn property="referencia" title="${message(code: 'material.referencia.label', default: 'Referencia')}" />
-
                                         <g:sortableColumn property="cantidad" title="${message(code: 'material.cantidad.label', default: 'Cantidad')}" />
-
                                     </tr>
                                     <tr>
 

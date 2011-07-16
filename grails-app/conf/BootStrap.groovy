@@ -121,8 +121,8 @@ class BootStrap {
 			}
 
 			/*#########################   NOTAS  ################################3*/
-			def matLlave = new MaterialUtilizado(incidencia: inci,material: llave,cantidad: 1).save(failOnError:true)
-			def matSabana = new MaterialUtilizado(incidencia: inci,material: sabanas,cantidad: 1).save(failOnError:true)
+			def matLlave = new MaterialUtilizado(incidencia: inci,material: llave,usuario:tecUser,cantidad: 1).save(failOnError:true)
+			def matSabana = new MaterialUtilizado(incidencia: inci,material: sabanas,usuario:tecUser,cantidad: 1).save(failOnError:true)
 
 
 		}
