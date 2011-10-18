@@ -7,10 +7,11 @@ class Incidencia {
 
 	String titulo
 	Usuario tecnico
-	String nombreContacto
+	Usuario contacto
 	String tlfContacto
 	EstadoIncidencia estadoIncidencia
 	Servicio servicio
+    Servicio servicioTecnico
 	Date dateCreated
 	Date lastUpdated	
 	int prioridad
@@ -31,17 +32,19 @@ class Incidencia {
 		range: 1..5)
 	titulo(
 		blank:false)
+    servicioTecnico(
+            nullable:true)
 	tecnico(
 		nullable:true)
-	nombreContacto(
-		blank:false)
+	contacto(
+        nullable:false)
 	tlfContacto(
 		nullable:true,
 		blank:true)
     }
 
 	static mapping = {
-		sort: "lastUpdated"
+		sort: "prioridad,lastUpdated"
         titulo column:'titulo', index:'titulo_idx'
 	}
 	

@@ -13,39 +13,113 @@ class BootStrap {
 		def tecRole = Rol.findByAuthority('ROLE_TECNICO') ?: new Rol(authority: 'ROLE_TECNICO').save(failOnError: true)
 		def adminRole = Rol.findByAuthority('ROLE_ADMIN') ?: new Rol(authority: 'ROLE_ADMIN').save(failOnError: true)
 
+/*######################### SERVICIOS ###############################3*/
+
+        def servEnfermeria	= Servicio.findByNombre('Enfermeria') ?:
+            new Servicio(
+                    nombre:'Enfermeria',
+                    codigo:'P3P1-ENF',
+                    tipoServicio:TipoServicio.NORMAL,
+                    pabellon:'Pab. III - San Francisco',
+                    planta:1)
+        def servJardineria	= Servicio.findByNombre('Jardinería') ?:
+            new Servicio(
+                    nombre:'Jardinería',
+                    codigo:'P2-JAR',
+                    tipoServicio:TipoServicio.TECNICO,
+                    pabellon:'Pab. II - El moro',
+                    planta:2)
+        def servCalefaccion = Servicio.findByNombre('Calefacción') ?:
+            new Servicio(
+                    nombre:'Calefacción',
+                    codigo:'P3P2-CAL',
+                    tipoServicio:TipoServicio.NORMAL,
+                    pabellon:'Pab. III - San Francisco',
+                    planta:2)
+        def servPower       = Servicio.findByNombre('Electricidad') ?:
+            new Servicio(
+                    nombre:'Electricidad',
+                    codigo:'P1P1-ELE',
+                    tipoServicio:TipoServicio.TECNICO,
+                    pabellon:'Pab. I - EL bolado del campanario',
+                    planta:1)
+        def servControl     = Servicio.findByNombre('Control') ?:
+            new Servicio(
+                    nombre:'Control',
+                    codigo:'Control',
+                    tipoServicio:TipoServicio.TECNICO,
+                    pabellon:'Pab. III - San Francisco',
+                    planta:1)
+
 
 /*######################### USUARIOS  ###############################3*/
 		def adminUser = Usuario.findByUsername('admin') ?: new Usuario(
 			name: 'Administrador Campeon',
 			username: 'admin',
 			password: springSecurityService.encodePassword('admin'),
+            servicio : servControl,
 			enabled: true).save(failOnError: true)
 		if (!adminUser.authorities.contains(adminRole)) {
 			SecUsuarioRol.create adminUser, adminRole
 		}
 
-		def tecUser = Usuario.findByUsername('tecnico') ?: new Usuario(
-			name: 'Tecnico currante',
-			username: 'tecnico',
-			password: springSecurityService.encodePassword('tecnico'),
+		def tecUser = Usuario.findByUsername('jardinero') ?: new Usuario(
+			name: 'El moreenoo',
+			username: 'jardinero',
+            servicio : servJardineria,
+			password: springSecurityService.encodePassword('jardinero'),
 			enabled: true).save(failOnError: true)
 		if (!tecUser.authorities.contains(adminRole)) {
 			SecUsuarioRol.create tecUser, tecRole
 		}
 
-		def userUser = Usuario.findByUsername('user') ?: new Usuario(
+        def chispasUser = Usuario.findByUsername('Chispas') ?: new Usuario(
+            name: 'Chispas de la luz',
+            username: 'Chispas',
+            servicio : servPower,
+            password: springSecurityService.encodePassword('Chispas'),
+            enabled: true).save(failOnError: true)
+        if (!chispasUser.authorities.contains(adminRole)) {
+            SecUsuarioRol.create chispasUser, tecRole
+        }
+
+		def userUser = Usuario.findByUsername('Juana') ?: new Usuario(
 			name: 'Juana de los Arcos',
 			username: 'Juana',
-			password: springSecurityService.encodePassword('user'),
+            servicio : servEnfermeria,
+			password: springSecurityService.encodePassword('Juana'),
 			enabled: true).save(failOnError: true)
 		if (!userUser.authorities.contains(adminRole)) {
 			SecUsuarioRol.create userUser, userRole
 		}
-/*######################### SERVICIOS ###############################3*/
 
-		def servEnfermeria	= Servicio.findByNombre('Enfermeria') ?: new Servicio(nombre:'Enfermeria', responsable:userUser).save(failOnError: true)
-		def servCalefaccion = Servicio.findByNombre('Calefacción') ?: new Servicio(nombre:'Calefacción', responsable:userUser).save(failOnError: true)
-		def servJardineria	= Servicio.findByNombre('Jardinería') ?: new Servicio(nombre:'Jardinería', responsable:userUser).save(failOnError: true)
+        def fontaUser = Usuario.findByUsername('Manolo') ?: new Usuario(
+            name: 'Manolo & perico',
+            username: 'Manolo',
+            servicio : servCalefaccion,
+            password: springSecurityService.encodePassword('Manolo'),
+            enabled: true).save(failOnError: true)
+        if (!userUser.authorities.contains(adminRole)) {
+            SecUsuarioRol.create fontaUser, userRole
+        }
+
+
+/*#########################  SALVAR SERVICIOS ###############################*/
+
+        servEnfermeria.responsable=userUser
+        servEnfermeria.save(failOnError: true)
+
+        servPower.responsable=chispasUser
+        servPower.save(failOnError: true)
+
+        servControl.responsable= adminUser
+        servControl.save(failOnError: true)
+
+        servJardineria.responsable=tecUser
+        servJardineria.save(failOnError: true)
+
+        servCalefaccion.responsable=fontaUser
+        servCalefaccion.save(failOnError: true)
 
 
 /*#########################   MATERIAL   ############################3*/
@@ -100,13 +174,16 @@ class BootStrap {
 
 /*######################### INCIDENCIAS #############################3*/
 		for (i in 0..130 ) {
+            Servicio s;
+            if (i % 2 == 0){s = servEnfermeria}
+            else {s=servCalefaccion}
 			def inci = new Incidencia(
-						estadoIncidencia:'ABIERTA',
-						servicio:servEnfermeria,
+						estadoIncidencia:EstadoIncidencia.ABIERTA,
+						servicio:s,
 						prioridad: i % 5 +1,
 						titulo:"Incidencia con un texto descriptivo y relevante" + i,
-						responable:tecUser,
-						nombreContacto:"Contacto de inci " + i
+						servicioTecnico:servControl,
+						contacto:userUser
 						)
 			inci.save(failOnError:true)
 			
@@ -126,12 +203,6 @@ class BootStrap {
 
 
 		}
-
-
-        //TipoMaterial tp = new TipoMaterial(etiqueta:ropa, material: sabanas).save(failOnError:true);
-        //TipoMaterial tp2 = new TipoMaterial(etiqueta:herramienta, material: llave).save(failOnError:true);
-        //TipoMaterial tp3 = new TipoMaterial(etiqueta:herramienta, material: bombilla).save(failOnError:true);
-
 	}
 
     def destroy = {

@@ -45,20 +45,20 @@ class IncidenciaController {
         [incidenciaInstanceList: result, incidenciaInstanceTotal: result.getTotalCount()]
     }
 
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
     def create = {
-        def incidenciaInstance = new Incidencia()
-        incidenciaInstance.properties = params
+        def incidenciaInstance = new IncidenciaCreateCommand()
         return [incidenciaInstance: incidenciaInstance]
     }
 
-    def save = {
-        def incidenciaInstance = new Incidencia(params)
-        if (incidenciaInstance.save(flush: true)) {
-            flash.message = "${message(code: 'default.created.message', args: [message(code: 'incidencia.label', default: 'Incidencia'), incidenciaInstance.id])}"
+    @Secured(['IS_AUTHENTICATED_REMEMBERED'])
+    def save = { IncidenciaCreateCommand cmd ->
+        if (cmd.hasErrors()){
+            render(view: "create", model: [incidenciaInstance: cmd, validation:cmd])
+        }else {
+            def incidenciaInstance = incidenciaService.newIncidencia(cmd)
+            flash.message = "[${message(code: 'default.created.message', args: [message(code: 'incidencia.label', default: 'Incidencia'), incidenciaInstance.id])}]"
             redirect(action: "show", id: incidenciaInstance.id)
-        }
-        else {
-            render(view: "create", model: [incidenciaInstance: incidenciaInstance])
         }
     }
 

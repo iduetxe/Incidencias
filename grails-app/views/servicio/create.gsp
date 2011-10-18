@@ -31,6 +31,27 @@
                                 </div>
                             </div>
                         
+                            <div class="row">
+                                <label for="tipoServicio"><g:message code="servicio.tipoServicio.label" default="Tipo Servicio" /></label>
+                                <div  class="value ${hasErrors(bean: servicioInstance, field: 'tipoServicio', 'errors')}">
+                                    <g:select name="tipoServicio" from="${es.almacen.servicios.TipoServicio?.values()}" keys="${es.almacen.servicios.TipoServicio?.values()*.name()}" value="${servicioInstance?.tipoServicio?.name()}"  />
+                                </div>
+                            </div>
+                        
+                            <div class="row">
+                                <label for="pabellon"><g:message code="servicio.pabellon.label" default="Pabellon" /></label>
+                                <div  class="value ${hasErrors(bean: servicioInstance, field: 'pabellon', 'errors')}">
+                                    <g:textField name="pabellon" value="${servicioInstance?.pabellon}" />
+                                </div>
+                            </div>
+                        
+                            <div class="row">
+                                <label for="planta"><g:message code="servicio.planta.label" default="Planta" /></label>
+                                <div  class="value ${hasErrors(bean: servicioInstance, field: 'planta', 'errors')}">
+                                    <g:textField name="planta" value="${fieldValue(bean: servicioInstance, field: 'planta')}" />
+                                </div>
+                            </div>
+                        
 	                    <div class="buttons">
 				<g:submitButton name="create" class="button save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			    </div>

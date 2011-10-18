@@ -2,6 +2,8 @@ package es.almacen.servicios
 
 class ServicioController {
 
+    def serviciosService
+
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
@@ -96,5 +98,22 @@ class ServicioController {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'servicio.label', default: 'Servicio'), params.id])}"
             redirect(action: "list")
         }
+    }
+
+    def listServicesJson = {
+        String search = params.getProperty("q")
+        List<String> tagsList = materialService.listMaterialTags(search);
+        StringBuffer res = new StringBuffer()
+        if (tagsList){
+            for (String tag : tagsList)
+            {
+                res.append(tag+"\n")
+            }
+            res.deleteCharAt(res.size()-1)
+        }
+        render res.toString()
+        //render (contentType:"text/json") {tagsList}
+        //render (contentType:"text/json") {'apple \n apricot|pear|prume'}
+        //render  'apple \n apricot|pear|prume'
     }
 }

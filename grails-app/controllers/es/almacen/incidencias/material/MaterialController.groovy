@@ -60,6 +60,9 @@ class MaterialController {
 
     @Secured(['ROLE_ADMIN','ROLE_TECNICO'])
     def show = {
+        //TODO: EL listado de incidencias asociadas es una patata que hace mil queries
+        flash.message = flash.message==null?[]:flash.message
+        flash.error = flash.error==null?[]:flash.error
         def materialInstance = Material.get(params.id)
         if (!materialInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'material.label', default: 'Material'), params.id])}"

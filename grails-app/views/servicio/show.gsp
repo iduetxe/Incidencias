@@ -8,6 +8,7 @@
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
+        <div id="breadCrumbText"><g:message code="default.show.label" args="[entityName]" /></div>
         <div class="body">
             <div class="cuaderno">
 		<div class="cuadernoUp"> </div>
@@ -35,6 +36,40 @@
                             	<div class="value">
 					<g:link controller="usuario" action="show" id="${servicioInstance?.responsable?.id}">${servicioInstance?.responsable?.encodeAsHTML()}</g:link>
 				</div>
+                            
+                        </div>
+                    
+			<div class="row">
+                            	<label><g:message code="servicio.tipoServicio.label" default="Tipo Servicio" /></label>
+                            
+                            	<div class="value">${servicioInstance?.tipoServicio?.encodeAsHTML()}</div>
+                            
+                        </div>
+                    
+			<div class="row">
+                            	<label><g:message code="servicio.pabellon.label" default="Pabellon" /></label>
+                            
+	                        <div valign="top" class="value">${fieldValue(bean: servicioInstance, field: "pabellon")}</div>
+                            
+                        </div>
+                    
+			<div class="row">
+                            	<label><g:message code="servicio.planta.label" default="Planta" /></label>
+                            
+	                        <div valign="top" class="value">${fieldValue(bean: servicioInstance, field: "planta")}</div>
+                            
+                        </div>
+                    
+			<div class="row">
+                            	<label><g:message code="servicio.usuarios.label" default="Usuarios" /></label>
+                            
+                            	<div class="value">
+                	                <ul>
+                       		        <g:each in="${servicioInstance.usuarios}" var="u">
+                                	    <li><g:link controller="usuario" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></li>
+                                	</g:each>
+                                	</ul>
+                            	</div>
                             
                         </div>
                     

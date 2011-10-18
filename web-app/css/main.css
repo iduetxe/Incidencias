@@ -179,14 +179,17 @@ div.errors li {
     padding-left: 30px;
 }
 
-td.errors select {
+.error_input select {
     border: 1px solid red;
+    background: #fff3f3;
 }
-td.errors input {
+.error_input input {
     border: 1px solid red;
+    background: #fff3f3;
 }
-td.errors textarea {
+.error_input textarea {
     border: 1px solid red;
+    background: #fff3f3;
 }
 
 /* TABLES */
@@ -499,6 +502,10 @@ td.inputSearch input{
 	text-align:justify;
 	padding:0px 15px;
 	text-indent: -15px; 
+}
+
+.hoja textarea{
+    width:350px;
 }
 /* ### LAYOUT ### */
 #content{

@@ -40,15 +40,17 @@
             </div>
 
             <div class="row">
-                <label><g:message code="incidencia.tecnico.label" default="Tecnico"/></label>
+                <label><g:message code="incidencia.servicioTecnico.label" default="Servicio técnico"/></label>
                 <div class="value">
-                    <g:link controller="usuario" action="show" id="${incidenciaInstance?.tecnico?.id}">${incidenciaInstance?.tecnico?.encodeAsHTML()}</g:link>
+                    <g:link controller="servicio" action="show" id="${incidenciaInstance?.servicioTecnico?.id}">${incidenciaInstance?.servicioTecnico?.encodeAsHTML()}</g:link>
                 </div>
             </div>
 
             <div class="row">
                 <label><g:message code="incidencia.nombreContacto.label" default="Nombre Contacto"/></label>
-                <div class="value">${fieldValue(bean: incidenciaInstance, field: "nombreContacto")}</div>
+                <div class="value">
+                    <g:link controller="usuario" action="show" id="${incidenciaInstance?.contacto?.id}">${incidenciaInstance?.contacto?.encodeAsHTML()}</g:link>
+                </div>
             </div>
 
             <div class="row">

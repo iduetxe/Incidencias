@@ -19,6 +19,7 @@
         </g:each>
 
     </g:if>
+%{--
     <g:hasErrors>
         <g:eachError>
             <div class="message error">
@@ -28,7 +29,14 @@
             </div>
         </g:eachError>
     </g:hasErrors>
+--}%
 
+
+    <g:hasErrors bean="${validation}">
+            <div class="message errors">
+                <g:renderErrors bean="${validation}" as="list" />
+            </div>
+    </g:hasErrors>
 
 
     <script>
@@ -38,7 +46,7 @@
                 height:200
             }, 1500);
 
-            $('#messages').slideUp(1500).delay(1500);
+            $('#messages').slideUp(1500).delay(2000);
         });
 
         function closeInfo(button) {

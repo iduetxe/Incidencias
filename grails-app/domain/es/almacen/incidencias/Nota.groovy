@@ -6,7 +6,8 @@ class Nota implements Comparable{
 
 	String texto
 	Incidencia incidencia
-	Usuario owner	
+	Usuario owner
+    TipoNota tipoNota = TipoNota.INFO
 	Date dateCreated = new Date()
 
 	static belongsTo = [incidencia:Incidencia, owner: Usuario]
@@ -16,6 +17,7 @@ class Nota implements Comparable{
 		incidencia(nullable:false)
 		texto(nullable:false, blank:false)
 		dateCreated(nullable:false)
+        tipoNota(nullable:false, inList: TipoNota.list())
 	}
 
 	String toString(){

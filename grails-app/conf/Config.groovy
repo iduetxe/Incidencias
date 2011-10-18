@@ -106,3 +106,7 @@ breadcrumbs.crumbs.max=4
 //Taggable
 grails.taggable.tag.table="tag"
 grails.taggable.tagLink.table="tag_link"
+
+//Validables
+grails.validateable.packages = ['es.almacen.incidencias', 'es.almacen.usuarios']
+grails.validateable.classes = [es.almacen.incidencias.IncidenciaCreateCommand, es.almacen.incidencias.AddNoteCommand]
