@@ -7,6 +7,10 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'incidencia.label', default: 'Incidencia')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
+
+        <!-- AUTOSUGEST -->
+        <g:loadAutocompleter/>
+
     </head>
     <body>
         <div class="body">
@@ -29,6 +33,7 @@
                                 <div  class="value ${hasErrors(bean: incidenciaInstance, field: 'servicio', 'error_input')}">
                                     <g:select name="servicio.id" from="${es.almacen.servicios.Servicio.list()}" optionKey="id" value="${incidenciaInstance?.servicio?.id}"  />
                                 </div>
+                                <g:selectService name="mandril"></g:selectService>
                             </div>
                         
                             <div class="row">

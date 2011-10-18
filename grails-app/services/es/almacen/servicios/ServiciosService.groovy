@@ -8,7 +8,8 @@ class ServiciosService {
 
 
     @Transactional(readOnly = true)
-    def listServicesByName(String word) {
-    return null ; //To change body of created methods use File | Settings | File Templates.
+    def listServicesByName(String serviceText) {
+        //TODO Busqueda única de servicio
+        return Servicio.list();
     }
 }

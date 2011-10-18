@@ -22,6 +22,13 @@ class BootStrap {
                     tipoServicio:TipoServicio.NORMAL,
                     pabellon:'Pab. III - San Francisco',
                     planta:1)
+        def servEnfermeria2	= Servicio.findByNombre('Enfermeria') ?:
+            new Servicio(
+                    nombre:'Enfermeria',
+                    codigo:'P3P2-ENF',
+                    tipoServicio:TipoServicio.NORMAL,
+                    pabellon:'Pab. III - San Francisco',
+                    planta:2)
         def servJardineria	= Servicio.findByNombre('Jardinería') ?:
             new Servicio(
                     nombre:'Jardinería',
@@ -108,6 +115,9 @@ class BootStrap {
 
         servEnfermeria.responsable=userUser
         servEnfermeria.save(failOnError: true)
+
+        servEnfermeria2.responsable=userUser
+        servEnfermeria2.save(failOnError: true)
 
         servPower.responsable=chispasUser
         servPower.save(failOnError: true)
