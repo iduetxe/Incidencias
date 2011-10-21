@@ -557,9 +557,29 @@ td.inputSearch input{
 
 /* ########### LOGIN #######################*/
 #login {
-        margin:5em 0 0 10em;
+    margin:5em 0 0 10em;
 	padding:0px;
-        text-align:center;
+    text-align:center;
 }
 
 
+.extraInfoAutoComplete{
+    float:left;
+    margin-left:15px;
+    border-left:1px solid;
+    font-size:0.8em;
+}
+.extraInfoAutoComplete p{
+    display:block;
+}
+.servicioAutocomplete{
+    text-transform:capitalize;
+    font-weight:bold;
+    bodrder-bottom:1px solid;
+}
+
+.extraDataServicio{
+    border: 1px solid;
+    background:white;
+    padding:4px;
+}

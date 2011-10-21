@@ -34,9 +34,6 @@ class MaterialController {
             res.deleteCharAt(res.size()-1)
         }
         render res.toString()
-        //render (contentType:"text/json") {tagsList}
-        //render (contentType:"text/json") {'apple \n apricot|pear|prume'}
-        //render  'apple \n apricot|pear|prume'
     }
 
     @Secured(['ROLE_ADMIN'])

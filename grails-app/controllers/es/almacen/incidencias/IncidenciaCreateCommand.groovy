@@ -11,17 +11,27 @@ import org.codehaus.groovy.grails.validation.Validateable
  */
 @Validateable
 class IncidenciaCreateCommand {
+
+    def serviciosService;
+
     String titulo
     Integer prioridad
     String nota
 	Integer tlfContacto
 	Servicio servicio
+    Long servicioId = 0
 
     static constraints = {
         prioridad(nullable:false,range:1..5)
         titulo(nullable:false, blank:false)
         nota(nullable:false, blank:false)
         tlfContacto(nullable:false)
-        servicio(nullable:false)
+        servicioId(
+                nullable:false,
+                validator: { val, obj ->
+                    if (val == null || val <= 0) return true;  // Salta el de arriba, es para que no alte de nuevo texto del validador
+                    obj.servicio = obj.serviciosService.findServicioById(val);
+                    return obj.servicio==null?false:true;
+                    })
     }
 }

@@ -102,12 +102,18 @@ class ServicioController {
 
     def listServicesJson = {
         String search = params.getProperty("q")
-        List<String> tagsList = materialService.listMaterialTags(search);
+        List<Servicio> tagsList = serviciosService.listServicesByName(search);
         StringBuffer res = new StringBuffer()
         if (tagsList){
-            for (String tag : tagsList)
+            for (Servicio servicio : tagsList)
             {
-                res.append(tag+"\n")
+                res.append(
+                        servicio.id+", "
+                        +servicio.codigo+", "
+                        +servicio.nombre +", "
+                        +servicio.pabellon +", "
+                        +servicio.planta +", "
+                        +"\n")
             }
             res.deleteCharAt(res.size()-1)
         }

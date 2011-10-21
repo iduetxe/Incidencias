@@ -36,6 +36,13 @@ class BootStrap {
                     tipoServicio:TipoServicio.TECNICO,
                     pabellon:'Pab. II - El moro',
                     planta:2)
+        def servFachadas	= Servicio.findByNombre('Fachadas') ?:
+            new Servicio(
+                    nombre:'Fachadas',
+                    codigo:'P1P0-Fachadas',
+                    tipoServicio:TipoServicio.NORMAL,
+                    pabellon:'Pab. I - Quirugicos',
+                    planta:0)
         def servCalefaccion = Servicio.findByNombre('Calefacción') ?:
             new Servicio(
                     nombre:'Calefacción',
@@ -121,6 +128,9 @@ class BootStrap {
 
         servPower.responsable=chispasUser
         servPower.save(failOnError: true)
+
+        servFachadas.responsable=fontaUser
+        servFachadas.save(failOnError: true)
 
         servControl.responsable= adminUser
         servControl.save(failOnError: true)

@@ -12,4 +12,11 @@ class ServiciosService {
         //TODO Busqueda única de servicio
         return Servicio.list();
     }
+
+
+    @Transactional(readOnly = true)
+    def findServicioById(Long id) {
+        //TODO Busqueda única de servicio
+        return Servicio.get(id);
+    }
 }

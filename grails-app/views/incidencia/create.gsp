@@ -29,11 +29,15 @@
                             </div>
                         
                             <div class="row">
-                                <label for="servicio"><g:message code="incidencia.servicio.label" default="Servicio" /></label>
+                                <label for="servicioId"><g:message code="incidencia.servicio.label" default="Servicio" /></label>
+%{--
                                 <div  class="value ${hasErrors(bean: incidenciaInstance, field: 'servicio', 'error_input')}">
                                     <g:select name="servicio.id" from="${es.almacen.servicios.Servicio.list()}" optionKey="id" value="${incidenciaInstance?.servicio?.id}"  />
                                 </div>
-                                <g:selectService name="mandril"></g:selectService>
+--}%
+                                <div  class="value ${hasErrors(bean: incidenciaInstance, field: 'servicioId', 'error_input')}">
+                                    <g:selectService name="servicioId"></g:selectService>
+                                </div>
                             </div>
                         
                             <div class="row">
