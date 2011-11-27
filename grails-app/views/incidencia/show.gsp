@@ -25,7 +25,17 @@
             <div class="row">
                 <label><g:message code="incidencia.servicio.label" default="Servicio"/></label>
                 <div class="value">
+                    <%-- TODO: Esto hace queries para obtener el servicio [HACER UN DTO]--%>
+                    <g:showServicio
+                            name="servicio"
+                            serviceCodigo="${incidenciaInstance?.servicio?.codigo}"
+                            serviceName="${incidenciaInstance?.servicio?.nombre}"
+                            servicePabellon="${incidenciaInstance?.servicio?.pabellon}"
+                            servicePlanta="${incidenciaInstance?.servicio?.planta}"
+                    />
+                    <%--
                     <g:link controller="servicio" action="show" id="${incidenciaInstance?.servicio?.id}">${incidenciaInstance?.servicio?.encodeAsHTML()}</g:link>
+                    --%>
                 </div>
             </div>
 

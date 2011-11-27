@@ -20,6 +20,8 @@ class IncidenciaCreateCommand {
 	Integer tlfContacto
 	Servicio servicio
     Long servicioId = 0
+    Servicio servicioTecnico
+    Long servicioTecnicoId = 0
 
     static constraints = {
         prioridad(nullable:false,range:1..5)
@@ -27,6 +29,13 @@ class IncidenciaCreateCommand {
         nota(nullable:false, blank:false)
         tlfContacto(nullable:false)
         servicioId(
+                nullable:false,
+                validator: { val, obj ->
+                    if (val == null || val <= 0) return true;  // Salta el de arriba, es para que no alte de nuevo texto del validador
+                    obj.servicio = obj.serviciosService.findServicioById(val);
+                    return obj.servicio==null?false:true;
+                    })
+        servicioTecnicoId(
                 nullable:false,
                 validator: { val, obj ->
                     if (val == null || val <= 0) return true;  // Salta el de arriba, es para que no alte de nuevo texto del validador

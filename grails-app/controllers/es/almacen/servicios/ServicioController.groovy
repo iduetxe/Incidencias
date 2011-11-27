@@ -100,6 +100,10 @@ class ServicioController {
         }
     }
 
+    private String servicioToList(Servicio servicio){
+        return """${servicio.id},${servicio.codigo},${servicio.nombre},${servicio.pabellon},${servicio.planta},\n"""
+
+    }
     def listServicesJson = {
         String search = params.getProperty("q")
         List<Servicio> tagsList = serviciosService.listServicesByName(search);
@@ -107,19 +111,10 @@ class ServicioController {
         if (tagsList){
             for (Servicio servicio : tagsList)
             {
-                res.append(
-                        servicio.id+", "
-                        +servicio.codigo+", "
-                        +servicio.nombre +", "
-                        +servicio.pabellon +", "
-                        +servicio.planta +", "
-                        +"\n")
+                res.append(servicioToList(servicio))
             }
             res.deleteCharAt(res.size()-1)
         }
         render res.toString()
-        //render (contentType:"text/json") {tagsList}
-        //render (contentType:"text/json") {'apple \n apricot|pear|prume'}
-        //render  'apple \n apricot|pear|prume'
     }
 }

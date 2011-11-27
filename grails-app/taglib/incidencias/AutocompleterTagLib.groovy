@@ -8,9 +8,9 @@ class AutocompleterTagLib {
 
     }
 
-    private String showServicio(String inputName, String codigo, String name, String pabellon, String planta){
-           """
-            <p id="codigo${inputName}" style="float:left;"> </p>
+    private String displayService(String inputName, String codigo, String name, String pabellon, String planta, boolean editable){
+       def res = """
+            <p id="codigo${inputName}" style="float:left;"> ${codigo}</p>
             <DIV class="extraDataServicio" ID="extraShowData${inputName}" style="position:absolute; display:none">
                    <p id="nombre${inputName}"> ${name}</p>
                    <p id="pabellon${inputName}"> ${pabellon} </p>
@@ -24,26 +24,35 @@ class AutocompleterTagLib {
                 }
 
                 \$('#codigo${inputName}').mouseover(function (){
+                    fixExtraData${inputName}()
                     \$('#extraShowData${inputName}').show();
                 });
                 \$('#codigo${inputName}').mouseout(function (){
                     \$('#extraShowData${inputName}').hide();
                 });
-
+           """
+       if (editable){
+           res +="""
                 \$('#codigo${inputName}').click(function (){
                     \$("#tagSuggest${inputName}").show();
                     \$("#tagSuggest${inputName}").val("");
                     \$('#extraShowData${inputName}').hide();
                     \$('#codigo${inputName}').hide();
                 });
-            </script>
+                """
+       }
+        res +=
            """
+                    </script>
+           """
+
+           res
     }
 
     def selectService = {attrs, body ->
         String inputName = attrs.name
         out << """ <input type='text' autocomplete = "off" id='tagSuggest${inputName}' name='${inputName}'> </input>"""
-        out << showServicio(inputName,"","","","");
+        out << displayService(inputName,"","","","",true);
         out << """
                 <script>
 
@@ -72,11 +81,12 @@ class AutocompleterTagLib {
                             var pabellon = data[3];
                             var planta = data[4];
                             \$("#tagSuggest${inputName}").hide();
-                            \$("#codigo${inputName}").append(codigo);
-                            \$("#nombre${inputName}").append(nombre);
-                            \$("#pabellon${inputName}").append(pabellon);
-                            \$("#planta${inputName}").append(planta);
+                            \$("#codigo${inputName}").text(codigo);
+                            \$("#nombre${inputName}").text(nombre);
+                            \$("#pabellon${inputName}").text(pabellon);
+                            \$("#planta${inputName}").text(planta);
                             \$("#${inputName}").val(id);
+                            \$('#codigo${inputName}').show();
                             fixExtraData${inputName}();
                         },
                         maxItemsToShow: 5
@@ -85,4 +95,13 @@ class AutocompleterTagLib {
                 """
     }
 
+    def showServicio = {attrs, body ->
+
+        String inputName = attrs.name
+        String codigo = attrs.serviceCodigo
+        String name = attrs.serviceName
+        String pabellon = attrs.servicePabellon
+        String planta = attrs.servicePlanta
+        out << displayService(inputName,codigo,name,pabellon,planta,false);
+    }
 }

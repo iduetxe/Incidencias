@@ -17,8 +17,8 @@ class IncidenciaController {
 
     def addNote = {
         AddNoteCommand cmd ->
-        flash.message = flash.message==null?[]:flash.message
-        flash.error = flash.error==null?[]:flash.error
+        flash.message = flash.message==null?[]:flash.message.values
+        flash.error = flash.error==null?[]:flash.error.values
 
         if (cmd.hasErrors()){
             redirect(action: "show", id: cmd.incidenciaId)
@@ -30,10 +30,10 @@ class IncidenciaController {
 
         Nota nota = new Nota(texto:cmd.nota,incidencia:i, owner:u, dateCreated:new Date() )
         if (nota.save(flush: true)) {
-            flash.message += ["${message(code: 'default.created.message', args: [message(code: 'nota.label', default: 'Nota'), nota.id])}"]
+            flash.message = "${message(code: 'incidencia.note.saved', args: [i.titulo, u.name])}"
             redirect(action: "show", id: i.id)
         }else{
-            flash.error += ["${message(code: 'addNote.error', default:'Error añadiendo nota')}"]
+            flash.error = "${message(code: 'addNote.error', default:'Error añadiendo nota')}"
             redirect(action: "show", id: i.id)
         }
     }
@@ -57,14 +57,14 @@ class IncidenciaController {
             render(view: "create", model: [incidenciaInstance: cmd, validation:cmd])
         }else {
             def incidenciaInstance = incidenciaService.newIncidencia(cmd)
-            flash.message = "[${message(code: 'default.created.message', args: [message(code: 'incidencia.label', default: 'Incidencia'), incidenciaInstance.id])}]"
+            flash.message = "${message(code: 'incidencia.saved', args: [incidenciaInstance.titulo])}"
             redirect(action: "show", id: incidenciaInstance.id)
         }
     }
 
     def show = {
-        flash.message = flash.message==null?[]:flash.message
-        flash.error = flash.error==null?[]:flash.error
+        flash.message = flash.message==null?[]:flash.message.values
+        flash.error = flash.error==null?[]:flash.error.values
 
         def incidenciaInstance = Incidencia.get(params.id)
         if (!incidenciaInstance) {

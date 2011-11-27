@@ -39,6 +39,13 @@
                                     <g:selectService name="servicioId"></g:selectService>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <label for="servicioTecnicoId"><g:message code="incidencia.servicioTecnico.label" default="Servicio de reparación" /></label>
+                                <div  class="value ${hasErrors(bean: incidenciaInstance, field: 'servicioTecnicoId', 'error_input')}">
+                                    <g:selectService name="servicioTecnicoId"></g:selectService>
+                                </div>
+                            </div>
                         
                             <div class="row">
                                 <label for="prioridad"><g:message code="incidencia.prioridad.label" default="Prioridad" /></label>

@@ -65,6 +65,60 @@ class BootStrap {
                     pabellon:'Pab. III - San Francisco',
                     planta:1)
 
+       def servEcoCardio= Servicio.findByNombre('Ecocardiogramas') ?:
+            new Servicio(
+                    nombre:'Ecocardiogramas',
+                    codigo:'PLP0-Eco',
+                    tipoServicio:TipoServicio.NORMAL,
+                    pabellon:'Pab. San Luis',
+                    planta:0)
+
+       def servEndoscopias= Servicio.findByNombre('Endoscopias') ?:
+            new Servicio(
+                    nombre:'Endoscopias',
+                    codigo:'PLP0-Endo',
+                    tipoServicio:TipoServicio.NORMAL,
+                    pabellon:'Pab. San Luis',
+                    planta:0)
+
+       def servDespacho1= Servicio.findByNombre('Desp. Médico Anestesista') ?:
+             new Servicio(
+                     nombre:'Desp. Médico Anestesista',
+                     codigo:'PQP1-DesMedAnes',
+                     tipoServicio:TipoServicio.NORMAL,
+                     pabellon:'Pab. Quirúrgico',
+                     planta:1)
+
+       def servDespacho2= Servicio.findByNombre('Desp. Médico Trauma (1)') ?:
+             new Servicio(
+                     nombre:'Desp. Médico Trauma (1)',
+                     codigo:'PQP1-DesMedTrauma1',
+                     tipoServicio:TipoServicio.NORMAL,
+                     pabellon:'Pab. Quirúrgico',
+                     planta:1)
+       def servDespacho3= Servicio.findByNombre('Desp. Médico Trauma (2)') ?:
+              new Servicio(
+                      nombre:'Desp. Médico Trauma (2)',
+                      codigo:'PQP1-DesMedTrauma2',
+                      tipoServicio:TipoServicio.NORMAL,
+                      pabellon:'Pab. Quirúrgico',
+                      planta:1)
+
+       def servDespacho4= Servicio.findByNombre('Desp. Médico Medicina Interna (2)') ?:
+              new Servicio(
+                      nombre:'Desp. Médico Trauma (2)',
+                      codigo:'PFP1-DespMedicinaInterna',
+                      tipoServicio:TipoServicio.NORMAL,
+                      pabellon:'Pab. San Francisco',
+                      planta:1)
+       def servConsulta= Servicio.findByNombre('Consulta (1)') ?:
+              new Servicio(
+                      nombre:'Consulta (1)',
+                      codigo:'PRP1-Consulta1',
+                      tipoServicio:TipoServicio.NORMAL,
+                      pabellon:'Pab. San Ramon',
+                      planta:1)
+
 
 /*######################### USUARIOS  ###############################3*/
 		def adminUser = Usuario.findByUsername('admin') ?: new Usuario(
@@ -140,6 +194,31 @@ class BootStrap {
 
         servCalefaccion.responsable=fontaUser
         servCalefaccion.save(failOnError: true)
+
+
+
+        servEcoCardio.responsable=userUser
+        servEcoCardio.save(failOnError: true)
+
+        servEndoscopias.responsable=userUser
+        servEndoscopias.save(failOnError: true)
+
+        servDespacho1.responsable=userUser
+        servDespacho1.save(failOnError: true)
+
+        servDespacho2.responsable=userUser
+        servDespacho2.save(failOnError: true)
+
+        servDespacho3.responsable=userUser
+        servDespacho3.save(failOnError: true)
+
+        servDespacho4.responsable=userUser
+        servDespacho4.save(failOnError: true)
+
+        servConsulta.responsable=userUser
+        servConsulta.save(failOnError: true)
+
+
 
 
 /*#########################   MATERIAL   ############################3*/
