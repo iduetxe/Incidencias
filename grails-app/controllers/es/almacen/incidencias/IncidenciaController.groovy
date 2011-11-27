@@ -120,6 +120,7 @@ class IncidenciaController {
         }
     }
 
+    @Secured(['ROLE_TECNICO'])
     def delete = {
         def incidenciaInstance = Incidencia.get(params.id)
         if (incidenciaInstance) {

@@ -39,14 +39,14 @@
                                     <g:selectService name="servicioId"></g:selectService>
                                 </div>
                             </div>
-
+<%--
                             <div class="row">
                                 <label for="servicioTecnicoId"><g:message code="incidencia.servicioTecnico.label" default="Servicio de reparación" /></label>
                                 <div  class="value ${hasErrors(bean: incidenciaInstance, field: 'servicioTecnicoId', 'error_input')}">
                                     <g:selectService name="servicioTecnicoId"></g:selectService>
                                 </div>
                             </div>
-                        
+--%>
                             <div class="row">
                                 <label for="prioridad"><g:message code="incidencia.prioridad.label" default="Prioridad" /></label>
                                 <div  class="value ${hasErrors(bean: incidenciaInstance, field: 'prioridad', 'error_input')}">
@@ -83,14 +83,7 @@
                                     <sec:username />
                                 </div>
                             </div>
-                        
-                            <div class="row">
-                                <label for="tlfContacto"><g:message code="incidencia.tlfContacto.label" default="Tlf Contacto" /></label>
-                                <div  class="value ${hasErrors(bean: incidenciaInstance, field: 'tlfContacto', 'error_input')}">
-                                    <g:textField name="tlfContacto" value="${incidenciaInstance?.tlfContacto}" />
-                                </div>
-                            </div>
-                        
+
 	                    <div class="buttons">
 				<g:submitButton name="create" class="button save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 			    </div>

@@ -19,4 +19,10 @@ class ServiciosService {
         //TODO Busqueda única de servicio
         return Servicio.get(id);
     }
+
+    @Transactional(readOnly = true)
+    def findServiciosByType(TipoServicio tipoServicio) {
+        //TODO Busqueda única de servicio
+        return Servicio.findAllByTipoServicio(tipoServicio)
+    }
 }

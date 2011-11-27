@@ -6,11 +6,14 @@ import org.springframework.security.access.annotation.Secured
 import es.almacen.usuarios.Usuario
 import es.almacen.usuarios.SecUsuario
 import java.security.Principal
+import es.almacen.servicios.Servicio
+import es.almacen.servicios.TipoServicio
 
 class IncidenciaService {
 
 
     def springSecurityService
+    def serviciosService
 
 	static transactional = true
 
@@ -37,13 +40,14 @@ class IncidenciaService {
 
         Usuario user = Usuario.load(springSecurityService.getPrincipal()._id);
         Incidencia i = new Incidencia()
+        Servicio s =  user.servicio;
+        Servicio stecnico =  serviciosService.findServiciosByType(TipoServicio.GESTOR).first()
         i.titulo = cmd.titulo;
         i.tecnico = null;
-	    i.contacto = user.servicio?.responsable
-	    i.tlfContacto= 9999
+	    i.contacto = s.responsable
 	    i.estadoIncidencia=EstadoIncidencia.ABIERTA
-	    i.servicio = user.getServicio()
-        i.servicioTecnico=null
+	    i.servicio = cmd.servicio
+        i.servicioTecnico = stecnico
     	i.prioridad = cmd.prioridad
 
         Nota nota = new Nota();

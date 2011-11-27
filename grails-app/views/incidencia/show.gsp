@@ -52,7 +52,14 @@
             <div class="row">
                 <label><g:message code="incidencia.servicioTecnico.label" default="Servicio técnico"/></label>
                 <div class="value">
-                    <g:link controller="servicio" action="show" id="${incidenciaInstance?.servicioTecnico?.id}">${incidenciaInstance?.servicioTecnico?.encodeAsHTML()}</g:link>
+                                        <%-- TODO: Esto hace queries para obtener el servicio [HACER UN DTO]--%>
+                    <g:showServicio
+                            name="servicioTecnico"
+                            serviceCodigo="${incidenciaInstance?.servicioTecnico?.codigo}"
+                            serviceName="${incidenciaInstance?.servicioTecnico?.nombre}"
+                            servicePabellon="${incidenciaInstance?.servicioTecnico?.pabellon}"
+                            servicePlanta="${incidenciaInstance?.servicioTecnico?.planta}"
+                    />
                 </div>
             </div>
 
@@ -65,7 +72,8 @@
 
             <div class="row">
                 <label><g:message code="incidencia.tlfContacto.label" default="Tlf Contacto"/></label>
-                <div class="value">${fieldValue(bean: incidenciaInstance, field: "tlfContacto")}</div>
+                <%-- TODO: Hacer un DTO para que esto no pida datos a BBDD--%>
+                <div class="value">${incidenciaInstance.servicio.tlfContacto}</div>
             </div>
 
             <div class="row">

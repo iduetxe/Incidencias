@@ -20,12 +20,14 @@ class BootStrap {
                     nombre:'Enfermeria',
                     codigo:'P3P1-ENF',
                     tipoServicio:TipoServicio.NORMAL,
+                    tlfContacto: 660010443,
                     pabellon:'Pab. III - San Francisco',
                     planta:1)
         def servEnfermeria2	= Servicio.findByNombre('Enfermeria') ?:
             new Servicio(
                     nombre:'Enfermeria',
                     codigo:'P3P2-ENF',
+                    tlfContacto: 660010443,
                     tipoServicio:TipoServicio.NORMAL,
                     pabellon:'Pab. III - San Francisco',
                     planta:2)
@@ -33,6 +35,7 @@ class BootStrap {
             new Servicio(
                     nombre:'Jardinería',
                     codigo:'P2-JAR',
+                    tlfContacto: 660010443,
                     tipoServicio:TipoServicio.TECNICO,
                     pabellon:'Pab. II - El moro',
                     planta:2)
@@ -40,6 +43,7 @@ class BootStrap {
             new Servicio(
                     nombre:'Fachadas',
                     codigo:'P1P0-Fachadas',
+                    tlfContacto: 660010443,
                     tipoServicio:TipoServicio.NORMAL,
                     pabellon:'Pab. I - Quirugicos',
                     planta:0)
@@ -47,6 +51,7 @@ class BootStrap {
             new Servicio(
                     nombre:'Calefacción',
                     codigo:'P3P2-CAL',
+                    tlfContacto: 660010443,
                     tipoServicio:TipoServicio.NORMAL,
                     pabellon:'Pab. III - San Francisco',
                     planta:2)
@@ -54,14 +59,16 @@ class BootStrap {
             new Servicio(
                     nombre:'Electricidad',
                     codigo:'P1P1-ELE',
+                    tlfContacto: 660010443,
                     tipoServicio:TipoServicio.TECNICO,
                     pabellon:'Pab. I - EL bolado del campanario',
                     planta:1)
-        def servControl     = Servicio.findByNombre('Control') ?:
+        def servControl     = Servicio.findByNombre('Talleres') ?:
             new Servicio(
-                    nombre:'Control',
-                    codigo:'Control',
-                    tipoServicio:TipoServicio.TECNICO,
+                    nombre:'Talleres',
+                    codigo:'Talleres',
+                    tlfContacto: 660010443,
+                    tipoServicio:TipoServicio.GESTOR,
                     pabellon:'Pab. III - San Francisco',
                     planta:1)
 
@@ -69,6 +76,7 @@ class BootStrap {
             new Servicio(
                     nombre:'Ecocardiogramas',
                     codigo:'PLP0-Eco',
+                    tlfContacto: 660010443,
                     tipoServicio:TipoServicio.NORMAL,
                     pabellon:'Pab. San Luis',
                     planta:0)
@@ -77,6 +85,7 @@ class BootStrap {
             new Servicio(
                     nombre:'Endoscopias',
                     codigo:'PLP0-Endo',
+                    tlfContacto: 660010443,
                     tipoServicio:TipoServicio.NORMAL,
                     pabellon:'Pab. San Luis',
                     planta:0)
@@ -85,6 +94,7 @@ class BootStrap {
              new Servicio(
                      nombre:'Desp. Médico Anestesista',
                      codigo:'PQP1-DesMedAnes',
+                     tlfContacto: 660010443,
                      tipoServicio:TipoServicio.NORMAL,
                      pabellon:'Pab. Quirúrgico',
                      planta:1)
@@ -93,6 +103,7 @@ class BootStrap {
              new Servicio(
                      nombre:'Desp. Médico Trauma (1)',
                      codigo:'PQP1-DesMedTrauma1',
+                     tlfContacto: 660010443,
                      tipoServicio:TipoServicio.NORMAL,
                      pabellon:'Pab. Quirúrgico',
                      planta:1)
@@ -100,6 +111,7 @@ class BootStrap {
               new Servicio(
                       nombre:'Desp. Médico Trauma (2)',
                       codigo:'PQP1-DesMedTrauma2',
+                      tlfContacto: 660010443,
                       tipoServicio:TipoServicio.NORMAL,
                       pabellon:'Pab. Quirúrgico',
                       planta:1)
@@ -108,6 +120,7 @@ class BootStrap {
               new Servicio(
                       nombre:'Desp. Médico Trauma (2)',
                       codigo:'PFP1-DespMedicinaInterna',
+                      tlfContacto: 660010443,
                       tipoServicio:TipoServicio.NORMAL,
                       pabellon:'Pab. San Francisco',
                       planta:1)
@@ -115,6 +128,7 @@ class BootStrap {
               new Servicio(
                       nombre:'Consulta (1)',
                       codigo:'PRP1-Consulta1',
+                      tlfContacto: 660010443,
                       tipoServicio:TipoServicio.NORMAL,
                       pabellon:'Pab. San Ramon',
                       planta:1)

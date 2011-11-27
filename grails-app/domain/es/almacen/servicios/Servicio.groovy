@@ -10,6 +10,8 @@ class Servicio {
     TipoServicio tipoServicio
     String pabellon
     Integer planta
+    String tlfContacto
+
 
 
     static hasMany = [usuarios:Usuario]
@@ -20,6 +22,7 @@ class Servicio {
 		responsable (nullable:false)
         tipoServicio(nullable:false, inList:TipoServicio.list())
         pabellon(nullable:false)
+        tlfContacto(nullable:false)
 	}
 
 
