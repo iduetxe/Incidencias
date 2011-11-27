@@ -14,7 +14,7 @@ class AutocompleterTagLib {
             <DIV class="extraDataServicio" ID="extraShowData${inputName}" style="position:absolute; display:none">
                    <p id="nombre${inputName}"> ${name}</p>
                    <p id="pabellon${inputName}"> ${pabellon} </p>
-                   <p>Planta: <span id="planta${inputName}"> </span></p>
+                   <p>Planta: <span id="planta${inputName}">${planta} </span></p>
             </DIV>
             <script>
                 function fixExtraData${inputName}(){
